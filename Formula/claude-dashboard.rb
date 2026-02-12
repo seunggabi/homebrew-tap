@@ -5,54 +5,78 @@
 class ClaudeDashboard < Formula
   desc "k9s-style TUI for managing Claude Code sessions"
   homepage "https://github.com/seunggabi/claude-dashboard"
-  version "0.9.1"
+  version "0.9.2"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.9.1/claude-dashboard_0.9.1_darwin_amd64.tar.gz"
-      sha256 "2979749f1d53db04d755358a0c5215e086392625a05bb7f03c1234177ce7a3fd"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.9.2/claude-dashboard_0.9.2_darwin_amd64.tar.gz"
+      sha256 "3a88c2bdc5806cf9d6ad56b79adf27f4b37904ab5fc3cfb977b2dc7fbbe26e50"
 
       def install
         bin.install "claude-dashboard"
+        # Install helper scripts to a temporary location for setup to use
+        libexec.install "scripts/tmux-mouse-toggle.sh"
+        libexec.install "scripts/tmux-status-bar.sh"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.9.1/claude-dashboard_0.9.1_darwin_arm64.tar.gz"
-      sha256 "335b3d83fb2de22977ef373fdd3f8ccef1c22edf6985bf8580cb154c4c00b9ed"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.9.2/claude-dashboard_0.9.2_darwin_arm64.tar.gz"
+      sha256 "0e83692d576b374d6a04813feb9caa068378485fdc313837d41fc8f66bb40b33"
 
       def install
         bin.install "claude-dashboard"
+        # Install helper scripts to a temporary location for setup to use
+        libexec.install "scripts/tmux-mouse-toggle.sh"
+        libexec.install "scripts/tmux-status-bar.sh"
       end
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.9.1/claude-dashboard_0.9.1_linux_amd64.tar.gz"
-      sha256 "9a6fff242334e0b1efe82819d7575e09c32754684b9261f6756547baa1b1804a"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.9.2/claude-dashboard_0.9.2_linux_amd64.tar.gz"
+      sha256 "e044ff4b43baf7a4e0bd5ca3009eb2ce4038b4972b5143affc32ac9be4a48bc4"
       def install
         bin.install "claude-dashboard"
+        # Install helper scripts to a temporary location for setup to use
+        libexec.install "scripts/tmux-mouse-toggle.sh"
+        libexec.install "scripts/tmux-status-bar.sh"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.9.1/claude-dashboard_0.9.1_linux_arm64.tar.gz"
-      sha256 "b196e124a1d9feab00bca7f6f7600b0b08496756382b51eb6966728427535f83"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.9.2/claude-dashboard_0.9.2_linux_arm64.tar.gz"
+      sha256 "8c557e9855f0f67b4909a1e9aa54269c975d2ab68e7b5677096db33675540417"
       def install
         bin.install "claude-dashboard"
+        # Install helper scripts to a temporary location for setup to use
+        libexec.install "scripts/tmux-mouse-toggle.sh"
+        libexec.install "scripts/tmux-status-bar.sh"
       end
     end
   end
 
   def post_install
-    # Helper scripts are embedded in the binary
-    # They will be installed automatically on first run
-    system "#{bin}/claude-dashboard", "setup" rescue nil
+    # Run setup to install scripts and configure tmux
+    # Copy scripts from libexec to ~/.local/bin
+    home = Dir.home
+    local_bin = File.join(home, ".local", "bin")
+    FileUtils.mkdir_p(local_bin)
+
+    FileUtils.cp(File.join(libexec, "tmux-mouse-toggle.sh"), File.join(local_bin, "claude-dashboard-mouse-toggle"))
+    FileUtils.cp(File.join(libexec, "tmux-status-bar.sh"), File.join(local_bin, "claude-dashboard-status-bar"))
+    FileUtils.chmod(0755, File.join(local_bin, "claude-dashboard-mouse-toggle"))
+    FileUtils.chmod(0755, File.join(local_bin, "claude-dashboard-status-bar"))
+
+    # Run setup to configure tmux
+    system "#{bin}/claude-dashboard", "setup"
   end
 
   def caveats
     <<~EOS
-      Setup is automatic on first run, or run manually:
+      Setup was automatically run during installation.
+
+      If you need to re-run setup:
         claude-dashboard setup
 
       This will:
