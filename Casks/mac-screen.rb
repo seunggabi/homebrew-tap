@@ -14,12 +14,6 @@ cask "mac-screen" do
 
   app "MacScreen.app"
 
-  postflight do
-    system_command "#{appdir}/MacScreen.app/Contents/MacOS/MacScreen",
-                   args: ["--version"],
-                   print_stderr: false
-  end
-
   uninstall quit: "com.seunggabi.mac-screen"
 
   zap trash: [
