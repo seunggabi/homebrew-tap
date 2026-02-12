@@ -5,41 +5,49 @@
 class ClaudeDashboard < Formula
   desc "k9s-style TUI for managing Claude Code sessions"
   homepage "https://github.com/seunggabi/claude-dashboard"
-  version "0.7.0"
+  version "0.7.1"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.7.0/claude-dashboard_0.7.0_darwin_amd64.tar.gz"
-      sha256 "bfe3b5028302e7fa878e8952a1798d0d633097f01b9216f55d45ba7b276a1a15"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.7.1/claude-dashboard_0.7.1_darwin_amd64.tar.gz"
+      sha256 "a5cfea1a338d582fc376d2faf3f6504309c0e376d0df59adec0ea38673ae36e1"
 
       def install
         bin.install "claude-dashboard"
+        bin.install "scripts/tmux-mouse-toggle.sh" => "claude-dashboard-mouse-toggle"
+        bin.install "scripts/tmux-status-bar.sh" => "claude-dashboard-status-bar"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.7.0/claude-dashboard_0.7.0_darwin_arm64.tar.gz"
-      sha256 "ea1ce41cadbaa514db0e04e9222b8f1e8da941c850d82b1c44ee259772787d3d"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.7.1/claude-dashboard_0.7.1_darwin_arm64.tar.gz"
+      sha256 "1e4a3a9420067d992ad9927f0790b2785654314325cd4defde00ad264d84cada"
 
       def install
         bin.install "claude-dashboard"
+        bin.install "scripts/tmux-mouse-toggle.sh" => "claude-dashboard-mouse-toggle"
+        bin.install "scripts/tmux-status-bar.sh" => "claude-dashboard-status-bar"
       end
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.7.0/claude-dashboard_0.7.0_linux_amd64.tar.gz"
-      sha256 "6b8a4678fbe52d3527e2377625f8be7d265553904b84b3ab5855317cb46bbcba"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.7.1/claude-dashboard_0.7.1_linux_amd64.tar.gz"
+      sha256 "93553ab8e58234e1e43c477298eb9119ae9936e515cdd551149a1aeb4ab4c6d7"
       def install
         bin.install "claude-dashboard"
+        bin.install "scripts/tmux-mouse-toggle.sh" => "claude-dashboard-mouse-toggle"
+        bin.install "scripts/tmux-status-bar.sh" => "claude-dashboard-status-bar"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.7.0/claude-dashboard_0.7.0_linux_arm64.tar.gz"
-      sha256 "d34f8b2819b52536a5f02dc7e4c1ae3e4e9195b62d48f03cc739981a0afc8901"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.7.1/claude-dashboard_0.7.1_linux_arm64.tar.gz"
+      sha256 "969350472bfcc5a4174f73b39ca01065d156fa68893f5532cb9caaa6cb56f63a"
       def install
         bin.install "claude-dashboard"
+        bin.install "scripts/tmux-mouse-toggle.sh" => "claude-dashboard-mouse-toggle"
+        bin.install "scripts/tmux-status-bar.sh" => "claude-dashboard-status-bar"
       end
     end
   end
