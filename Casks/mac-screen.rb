@@ -14,7 +14,14 @@ cask "mac-screen" do
 
   app "MacScreen.app"
 
-  uninstall quit: "com.seunggabi.mac-screen"
+  uninstall_preflight do
+    system_command "/usr/bin/killall",
+                   args: ["-9", "MacScreen"],
+                   print_stderr: false
+  end
+
+  uninstall quit:   "com.seunggabi.mac-screen",
+            delete: "/Applications/MacScreen.app"
 
   zap trash: [
     "~/Library/Preferences/com.seunggabi.mac-screen.plist",
