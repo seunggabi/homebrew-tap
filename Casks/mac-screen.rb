@@ -1,6 +1,6 @@
 cask "mac-screen" do
-  version "0.4.13"
-  sha256 "58769372a340638306ee36d5ea6b4871e98cbdff022ea59133453fce47dd9c62"
+  version "0.4.14"
+  sha256 "671662182b3d19e5b3dc1b83575986a6758cbce0067aca6df41bcf23fd36b979"
 
   url "https://github.com/seunggabi/mac-screen/releases/download/v#{version}/MacScreen-#{version}.dmg"
   name "MacScreen"
