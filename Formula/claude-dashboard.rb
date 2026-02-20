@@ -5,53 +5,57 @@
 class ClaudeDashboard < Formula
   desc "k9s-style TUI for managing Claude Code sessions"
   homepage "https://github.com/seunggabi/claude-dashboard"
-  version "0.10.0"
+  version "0.11.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.10.0/claude-dashboard_0.10.0_darwin_amd64.tar.gz"
-      sha256 "b766674512fc327fe4b27beaaf67ad68a2ecdb497e780a37e61769078ea5edd1"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.11.0/claude-dashboard_0.11.0_darwin_amd64.tar.gz"
+      sha256 "3930896abdb7c1842680964ebaad6172f5cff56d011779bae73845aa54c85356"
 
       def install
         bin.install "claude-dashboard"
         # Install helper scripts to a temporary location for setup to use
         libexec.install "scripts/tmux-mouse-toggle.sh"
         libexec.install "scripts/tmux-status-bar.sh"
+        libexec.install "scripts/tmux-save-history.sh"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.10.0/claude-dashboard_0.10.0_darwin_arm64.tar.gz"
-      sha256 "a7d80d06242a98da7496058c6d6a60116cc9d1ca1806149c9fba436a543c9f2a"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.11.0/claude-dashboard_0.11.0_darwin_arm64.tar.gz"
+      sha256 "1b4a10e613fdd415d19f82f2c5356bacb1189a4f4be2a0b391a887fd874204eb"
 
       def install
         bin.install "claude-dashboard"
         # Install helper scripts to a temporary location for setup to use
         libexec.install "scripts/tmux-mouse-toggle.sh"
         libexec.install "scripts/tmux-status-bar.sh"
+        libexec.install "scripts/tmux-save-history.sh"
       end
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.10.0/claude-dashboard_0.10.0_linux_amd64.tar.gz"
-      sha256 "0a1582d1ace668f19021510f057d520ee9b96f53f103c407d5f942a3c81ee6ac"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.11.0/claude-dashboard_0.11.0_linux_amd64.tar.gz"
+      sha256 "182a78ac4d6da0a571fee6b5eab54356d0553b7d829a385a47f2f98f50105126"
       def install
         bin.install "claude-dashboard"
         # Install helper scripts to a temporary location for setup to use
         libexec.install "scripts/tmux-mouse-toggle.sh"
         libexec.install "scripts/tmux-status-bar.sh"
+        libexec.install "scripts/tmux-save-history.sh"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.10.0/claude-dashboard_0.10.0_linux_arm64.tar.gz"
-      sha256 "2f8d5866e02729e98c962bd93eee86008bd57618fb637a99d705d3b1b395da67"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.11.0/claude-dashboard_0.11.0_linux_arm64.tar.gz"
+      sha256 "0f0623bfd30e1dc34da73630c77cad1ca393d9ef87ebd140993603487b0079fe"
       def install
         bin.install "claude-dashboard"
         # Install helper scripts to a temporary location for setup to use
         libexec.install "scripts/tmux-mouse-toggle.sh"
         libexec.install "scripts/tmux-status-bar.sh"
+        libexec.install "scripts/tmux-save-history.sh"
       end
     end
   end
@@ -65,8 +69,10 @@ class ClaudeDashboard < Formula
 
     FileUtils.cp(File.join(libexec, "tmux-mouse-toggle.sh"), File.join(local_bin, "claude-dashboard-mouse-toggle"))
     FileUtils.cp(File.join(libexec, "tmux-status-bar.sh"), File.join(local_bin, "claude-dashboard-status-bar"))
+    FileUtils.cp(File.join(libexec, "tmux-save-history.sh"), File.join(local_bin, "claude-dashboard-save-history"))
     FileUtils.chmod(0755, File.join(local_bin, "claude-dashboard-mouse-toggle"))
     FileUtils.chmod(0755, File.join(local_bin, "claude-dashboard-status-bar"))
+    FileUtils.chmod(0755, File.join(local_bin, "claude-dashboard-save-history"))
 
     # Run setup to configure tmux
     system "#{bin}/claude-dashboard", "setup"
