@@ -5,13 +5,13 @@
 class ClaudeDashboard < Formula
   desc "k9s-style TUI for managing Claude Code sessions"
   homepage "https://github.com/seunggabi/claude-dashboard"
-  version "0.9.3"
+  version "0.10.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.9.3/claude-dashboard_0.9.3_darwin_amd64.tar.gz"
-      sha256 "364b4ef6d2a5f87d901f6d47ff9483660ffa40d32f63c2fe330f76c6b25c7392"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.10.0/claude-dashboard_0.10.0_darwin_amd64.tar.gz"
+      sha256 "b766674512fc327fe4b27beaaf67ad68a2ecdb497e780a37e61769078ea5edd1"
 
       def install
         bin.install "claude-dashboard"
@@ -21,8 +21,8 @@ class ClaudeDashboard < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.9.3/claude-dashboard_0.9.3_darwin_arm64.tar.gz"
-      sha256 "ee10d340a7936fa5be128baf9927832a2303fd8a9e7698762f09d7822ba6d75d"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.10.0/claude-dashboard_0.10.0_darwin_arm64.tar.gz"
+      sha256 "a7d80d06242a98da7496058c6d6a60116cc9d1ca1806149c9fba436a543c9f2a"
 
       def install
         bin.install "claude-dashboard"
@@ -35,8 +35,8 @@ class ClaudeDashboard < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.9.3/claude-dashboard_0.9.3_linux_amd64.tar.gz"
-      sha256 "2072be56ea04308af7ad013132a947a9c6962a762e0b2f437ce100cd6b8cd008"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.10.0/claude-dashboard_0.10.0_linux_amd64.tar.gz"
+      sha256 "0a1582d1ace668f19021510f057d520ee9b96f53f103c407d5f942a3c81ee6ac"
       def install
         bin.install "claude-dashboard"
         # Install helper scripts to a temporary location for setup to use
@@ -45,8 +45,8 @@ class ClaudeDashboard < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.9.3/claude-dashboard_0.9.3_linux_arm64.tar.gz"
-      sha256 "4059eb084f29a201ffbf4e450117fc2efe057eff5492ba2f55af82c1e50b6514"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.10.0/claude-dashboard_0.10.0_linux_arm64.tar.gz"
+      sha256 "2f8d5866e02729e98c962bd93eee86008bd57618fb637a99d705d3b1b395da67"
       def install
         bin.install "claude-dashboard"
         # Install helper scripts to a temporary location for setup to use
