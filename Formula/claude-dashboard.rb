@@ -5,15 +5,15 @@
 class ClaudeDashboard < Formula
   desc "k9s-style TUI for managing Claude Code sessions"
   homepage "https://github.com/seunggabi/claude-dashboard"
-  version "0.11.0"
+  version "0.12.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.11.0/claude-dashboard_0.11.0_darwin_amd64.tar.gz"
-      sha256 "3930896abdb7c1842680964ebaad6172f5cff56d011779bae73845aa54c85356"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.12.0/claude-dashboard_0.12.0_darwin_amd64.tar.gz"
+      sha256 "875d85bee17be43f76478b6f058f440dc6e27fd1744c777a1c8b55dded70d6dc"
 
-      def install
+      define_method(:install) do
         bin.install "claude-dashboard"
         # Install helper scripts to a temporary location for setup to use
         libexec.install "scripts/tmux-mouse-toggle.sh"
@@ -22,10 +22,10 @@ class ClaudeDashboard < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.11.0/claude-dashboard_0.11.0_darwin_arm64.tar.gz"
-      sha256 "1b4a10e613fdd415d19f82f2c5356bacb1189a4f4be2a0b391a887fd874204eb"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.12.0/claude-dashboard_0.12.0_darwin_arm64.tar.gz"
+      sha256 "fde58d9dfb65775346c489d241f6035585d66a22ff73b7b32f23b82e73836cab"
 
-      def install
+      define_method(:install) do
         bin.install "claude-dashboard"
         # Install helper scripts to a temporary location for setup to use
         libexec.install "scripts/tmux-mouse-toggle.sh"
@@ -37,9 +37,9 @@ class ClaudeDashboard < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.11.0/claude-dashboard_0.11.0_linux_amd64.tar.gz"
-      sha256 "182a78ac4d6da0a571fee6b5eab54356d0553b7d829a385a47f2f98f50105126"
-      def install
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.12.0/claude-dashboard_0.12.0_linux_amd64.tar.gz"
+      sha256 "27b2d39eb72f5b8382833daba2c83aa42f7b79508cf9bf2430a4c4a689bb3bc5"
+      define_method(:install) do
         bin.install "claude-dashboard"
         # Install helper scripts to a temporary location for setup to use
         libexec.install "scripts/tmux-mouse-toggle.sh"
@@ -48,9 +48,9 @@ class ClaudeDashboard < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.11.0/claude-dashboard_0.11.0_linux_arm64.tar.gz"
-      sha256 "0f0623bfd30e1dc34da73630c77cad1ca393d9ef87ebd140993603487b0079fe"
-      def install
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.12.0/claude-dashboard_0.12.0_linux_arm64.tar.gz"
+      sha256 "6016e8567cf01afde02062555294014ac2bc1cf10caffb250e0030d4623b8882"
+      define_method(:install) do
         bin.install "claude-dashboard"
         # Install helper scripts to a temporary location for setup to use
         libexec.install "scripts/tmux-mouse-toggle.sh"
