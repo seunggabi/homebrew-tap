@@ -1,8 +1,8 @@
 class MacOps < Formula
   desc "macOS system optimization CLI tool"
   homepage "https://github.com/seunggabi/mac-ops"
-  url "https://github.com/seunggabi/mac-ops/releases/download/v1.4.0/patched.tar.gz"
-  sha256 "900c484f011e161dfb756e12efa52e6698aa8eb7bb08f57116cecc9ef352f9c6"
+  url "https://github.com/seunggabi/mac-ops/releases/download/v1.4.1/patched.tar.gz"
+  sha256 "0ee39b580f9978c8bba76dc053e4d3caea2785abcacbfb5db4bc6f37f17f32a4"
   license "MIT"
 
   depends_on :macos
