@@ -5,21 +5,21 @@
 class ClaudeDashboard < Formula
   desc "k9s-style TUI for managing Claude Code sessions"
   homepage "https://github.com/seunggabi/claude-dashboard"
-  version "0.14.0"
+  version "0.15.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.14.0/claude-dashboard_0.14.0_darwin_amd64.tar.gz"
-      sha256 "9d3535865bad1a47e45ad01e47d8e6c2eb3bfc410c4e3c89a90c0140012ab707"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.15.0/claude-dashboard_0.15.0_darwin_amd64.tar.gz"
+      sha256 "97067beb89566a6ee8f007c1ebe10d28f458d0d1d473066f651b66d70bbf7b21"
 
       define_method(:install) do
         bin.install "claude-dashboard"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.14.0/claude-dashboard_0.14.0_darwin_arm64.tar.gz"
-      sha256 "d67b1021f6da298a24a73a489a57a896a424e24738f14801d4652a6dc0ffdb5a"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.15.0/claude-dashboard_0.15.0_darwin_arm64.tar.gz"
+      sha256 "ce3d604cda14dde3f283a8b08be10f8ec306bfe85139017a8e89ab5015d5a7ac"
 
       define_method(:install) do
         bin.install "claude-dashboard"
@@ -29,15 +29,15 @@ class ClaudeDashboard < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.14.0/claude-dashboard_0.14.0_linux_amd64.tar.gz"
-      sha256 "de992479a1df88244113dbfe7a5a45b7cce265bc6b342210d306358afbb30a0b"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.15.0/claude-dashboard_0.15.0_linux_amd64.tar.gz"
+      sha256 "c956a3d4e472cf7f013dbe268764d7ad3aaa8fd82401b479c4b38b9560abfa38"
       define_method(:install) do
         bin.install "claude-dashboard"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.14.0/claude-dashboard_0.14.0_linux_arm64.tar.gz"
-      sha256 "07423784ba6c99ac9ee1d80d18b2f65df42bff7d2c16396d91484d9456f4047d"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.15.0/claude-dashboard_0.15.0_linux_arm64.tar.gz"
+      sha256 "48f3601c0e00eecb1504401575123d11bbca7a428e782ea5357d38ce4fca3da8"
       define_method(:install) do
         bin.install "claude-dashboard"
       end
