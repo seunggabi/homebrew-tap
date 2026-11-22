@@ -5,21 +5,21 @@
 class ClaudeDashboard < Formula
   desc "k9s-style TUI for managing Claude Code sessions"
   homepage "https://github.com/seunggabi/claude-dashboard"
-  version "0.18.0"
+  version "0.18.1"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.18.0/claude-dashboard_0.18.0_darwin_amd64.tar.gz"
-      sha256 "d6bc1f4af90c1cc3e208b1da789cd00be98f39639b3b7a13419e477ef1513dba"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.18.1/claude-dashboard_0.18.1_darwin_amd64.tar.gz"
+      sha256 "21885de42d561114ee56b588974d084e1f1a72d6427ab747dd2f1378874cffac"
 
       define_method(:install) do
         bin.install "claude-dashboard"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.18.0/claude-dashboard_0.18.0_darwin_arm64.tar.gz"
-      sha256 "ea4df7885a7cc4d28a1d504ba7e2e15b694beea0e1fe428ceaa4e4dc3cb1c3e2"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.18.1/claude-dashboard_0.18.1_darwin_arm64.tar.gz"
+      sha256 "8fb73098df167b539c514a1c275afdd047ca28253679a8515d2addd9e7a544b3"
 
       define_method(:install) do
         bin.install "claude-dashboard"
@@ -29,38 +29,32 @@ class ClaudeDashboard < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.18.0/claude-dashboard_0.18.0_linux_amd64.tar.gz"
-      sha256 "22782a2d6f4e6c0d8407da5c0aedfc4df6bef13aed32085ded42ac15ca44c6d3"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.18.1/claude-dashboard_0.18.1_linux_amd64.tar.gz"
+      sha256 "4ce955923739e8b62d852601ff477900dbfa327d59052afd6c52423f8618a214"
       define_method(:install) do
         bin.install "claude-dashboard"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.18.0/claude-dashboard_0.18.0_linux_arm64.tar.gz"
-      sha256 "c21b442601d3f297c9566bfd77cfcdac5a6421644a9c07306f0d1a8c3d34b8a0"
+      url "https://github.com/seunggabi/claude-dashboard/releases/download/v0.18.1/claude-dashboard_0.18.1_linux_arm64.tar.gz"
+      sha256 "f5ef72c137d38163275602a2f0dddeb777b0f44fb3a16130b38bc871913037d2"
       define_method(:install) do
         bin.install "claude-dashboard"
       end
     end
   end
 
-  def post_install
-    # The helper scripts are embedded in the binary; setup writes them to
-    # ~/.local/bin and configures tmux.
-    system "#{bin}/claude-dashboard", "setup"
-  end
-
   def caveats
     <<~EOS
-      Setup was automatically run during installation.
+      claude-dashboard does not change your tmux configuration on install.
+      The first time you run it in a terminal it shows what it would change
+      and asks before doing anything.
 
-      If you need to re-run setup:
+      To set up tmux integration yourself (backs up ~/.tmux.conf first):
         claude-dashboard setup
 
-      This will:
-      - Install helper scripts to ~/.local/bin/
-      - Configure ~/.tmux.conf for F12 mouse toggle
-      - Add status bar with version info
+      To preview the changes without applying them:
+        claude-dashboard setup --dry-run
 
       To start using claude-dashboard:
         claude-dashboard
