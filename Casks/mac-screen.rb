@@ -14,10 +14,8 @@ cask "mac-screen" do
 
   app "MacScreen.app"
 
-  uninstall_preflight do
-    system_command "/usr/bin/killall",
-                   args: ["-9", "MacScreen"],
-                   print_stderr: false
+  uninstall_preflight_steps do
+    terminate_process "MacScreen"
   end
 
   uninstall quit:   "com.seunggabi.mac-screen",
